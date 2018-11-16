@@ -25,7 +25,7 @@ public:
   int getVeces();
   vector<Cancion*> getLista();
 
-  void addLista(Cancion);
+  void addLista(Cancion*);
 };
 
 #endif

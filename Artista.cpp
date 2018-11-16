@@ -35,6 +35,6 @@ int Artista::getVeces(){
 vector<Cancion*> Artista::getLista(){
   return lista;
 }
-void Artista::addLista(Cancion can){
-    lista.push_back(new Cancion());
+void Artista::addLista(Cancion* can){
+    lista.push_back(can);
 }
