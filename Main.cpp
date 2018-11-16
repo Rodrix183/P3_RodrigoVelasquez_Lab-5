@@ -74,7 +74,8 @@ int main(){
         //crear artista
         cout<<"Ingrese el nombre del artista: "<<endl;
         cin>>titArt;
-
+        lista_art.push_back(new Artista(titArt,vecesArt));
+        cout<<"Ingresado con exito "<<endl;
       }break;
 
       case 3:{
@@ -84,10 +85,8 @@ int main(){
         cin>> titPl;
         cout<<"Ingrese descripcion"<<endl;
         cin>> descriPl;
-        //lista Canciones
-        for(int i = 0; i < lista_can.size();i++){
-          cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
-        }
+        lista_pl.push_back(new Playlist(titPl,descriPl));
+        cout<<"Ingresado con exito "<<endl;
       }break;
 
       case 4:{
@@ -96,11 +95,8 @@ int main(){
         cin>>titRad;
         cout<<"Ingrese el Genero"<<endl;
         cin>> genRad;
-
-        //lista Canciones
-        for(int i = 0; i < lista_can.size();i++){
-          cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
-        }
+        lista_rad.push_back(new Radio(titRad,genRad));
+        cout<<"Ingresado con exito "<<endl;
       }break;
 
       case 5:{
@@ -111,28 +107,42 @@ int main(){
         <<"4. Radio\n";
         cin>>opRep;
         switch (opRep) {
-          case 1:{
-            for(int i = 0; i < lista_can.size();i++){
-              cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
-            }
+          case 1:{ //cancion
+            cout<<"Ingrese # de cancion para agregar al artista: "<<endl;
+              for(int i = 0; i < lista_can.size();i++){
+                cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
+              }
+              cin>>posCan;
+              vecesCanciones++;
+            lista_can.at(posCan)->setVeces(vecesCanciones);
+            cout<<"Veces reproducidas: "<<lista_can.at(posCan)->getVeces()<<endl;
           }break;
 
-          case 2:{
+          case 2:{ //playlist
             for(int i = 0; i < lista_pl.size();i++){
               cout<<i<<") "<<lista_pl.at(i)->getNombre()<<endl;
             }
           }break;
 
-          case 3:{
-            for(int i = 0; i < lista_art.size();i++){
-              cout<<i<<") "<<lista_art.at(i)->getNombre()<<endl;
-            }
+          case 3:{ //artista
+            /////////////////////////////////////////
+            cout<<"Ingrese # de artista: "<<endl;
+              for(int i = 0; i < lista_art.size();i++){
+                cout<<i<<") "<<lista_art.at(i)->getNombre()<<endl;
+              }
+              cin>>posArt;
+
+            cout<<"Ingrese # de cancion del artista: "<<endl;
+              for(int i = 0; i < lista_can.size();i++){
+                //cout<<i<<") "<<lista_art.at(i)->getLista()<<endl;
+              }
+              cin>>posCan;
+
           }break;
 
-          case 4:{
-            for(int i = 0; i < lista_rad.size();i++){
-              cout<<i<<") "<<lista_rad.at(i)->getNombre()<<endl;
-            }
+          case 4:{ //radio
+            ///////////////////////////////////////
+
           }break;
 
           default:
@@ -153,6 +163,7 @@ int main(){
             cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
           }
           cin>>posCan;
+          lista_art[posArt]->addLista(lista_can[posCan]);
 
       }break;
 
@@ -169,7 +180,7 @@ int main(){
             cout<<i<<") "<<lista_can.at(i)->getTitulo()<<endl;
           }
           cin>>posCan;
-
+          lista_pl[posPl]->addLista(lista_can[posCan]);
       }break;
 
       case 8:{
@@ -186,7 +197,8 @@ int main(){
           }
           cin>>posCan;
 
-
+          //song->addLista(lista_can.at(posCan));
+          lista_rad[posRad]->addLista(lista_can[posCan]);
 
       }break;
       default:
