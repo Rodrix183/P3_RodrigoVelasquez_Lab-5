@@ -23,7 +23,7 @@ void Artista::setNombre(string _nombre){
 void Artista::setVeces(int _veces){
   veces = _veces;
 }
-void Artista::setLista(vector<Cancion> list){
+void Artista::setLista(vector<Cancion*> list){
   lista = list;
 }
 string Artista::getNombre(){
